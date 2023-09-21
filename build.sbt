@@ -1,26 +1,22 @@
-// See README.md for license details.
-
 ThisBuild / scalaVersion     := "2.13.8"
 ThisBuild / version          := "0.1.0"
 ThisBuild / organization     := "com.github.gary2342"
 
-val chiselVersion = "5.0.0"
+val chiselVersion = "3.5.1"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "fuck11111",
+    name := "chiseltemplateHYX",
     libraryDependencies ++= Seq(
-      "org.chipsalliance" %% "chisel" % chiselVersion,
-      "edu.berkeley.cs" %% "chiseltest" % "5.0.0" % "test"
+      "edu.berkeley.cs" %% "chisel3" % chiselVersion,
+      "edu.berkeley.cs" %% "chiseltest" % "0.5.1" % "test"
     ),
     scalacOptions ++= Seq(
       "-language:reflectiveCalls",
       "-deprecation",
       "-feature",
       "-Xcheckinit",
-      "-Ymacro-annotations",
       "-P:chiselplugin:genBundleElements",
     ),
-    addCompilerPlugin("org.chipsalliance" % "chisel-plugin" % chiselVersion cross CrossVersion.full),
+    addCompilerPlugin("edu.berkeley.cs" % "chisel3-plugin" % chiselVersion cross CrossVersion.full),
   )
-
